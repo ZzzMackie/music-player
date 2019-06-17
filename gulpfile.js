@@ -37,7 +37,7 @@ gulp.task("html",function(){
 	let page = gulp.src(folder.src + "index.html")
 				   .pipe(connect.reload())
 		if(!devMod){
-			page.pipe(replace('./', '/music-player/dist/'))
+			// page.pipe(replace('./', '/music-player/dist/'))
 			page.pipe(htmlMin())
 		}
 		page.pipe(gulp.dest(folder.dist + ""))
