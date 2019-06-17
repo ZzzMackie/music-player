@@ -25,6 +25,8 @@ var postCss = require("gulp-postcss");
 var autoCss = require("autoprefixer");
 //开启服务器
 var connect = require("gulp-connect");
+
+var replace = require('gulp-replace');
 //环境变量
 var devMod = process.env.NODE_ENV == "development";
 //设置环境变量的命令  export NODE_ENV=development
@@ -35,6 +37,7 @@ gulp.task("html",function(){
 	let page = gulp.src(folder.src + "index.html")
 				   .pipe(connect.reload())
 		if(!devMod){
+			page.pipe(replace('./', '/music-player/dist/'))
 			page.pipe(htmlMin())
 		}
 		page.pipe(gulp.dest(folder.dist + ""))
